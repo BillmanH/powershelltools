@@ -1,13 +1,9 @@
 # Configuration variables
 $meetingSubject = "Accenture Internal Meeting"
 $clientMeetingSubject = "Client Meeting"
-$meetingBody = @"
-I have a meeting at this time within another 0365 tenant. I'll be offline at this time.
 
-I'll respond as soon as I'm able to return.
-"@
 $startdate = "6/19/2022"
-$enddate = "6/21/2022"
+$enddate = "6/25/2022"
 
 
 
@@ -28,7 +24,6 @@ $calendar = Get-OutlookCalendar | where-object { ($_.start -gt [datetime]$startd
 foreach ($j in $calendar){
     $j.subject = $meetingSubject
     $j.Location = "Microsoft Teams Meeting"
-    $j.Body = $meetingBody
 }
 
 # Export that calendar to CSV.
@@ -44,7 +39,6 @@ foreach ($meet in $newCalendar){
     $ol = New-Object -ComObject Outlook.Application
     $meeting = $ol.CreateItem('olAppointmentItem')
     $meeting.Subject = $meet.subject
-    $meeting.Body = $meet.Body
     $meeting.Location = $meet.location
     $meeting.MeetingStatus = [Microsoft.Office.Interop.Outlook.OlMeetingStatus]::olMeeting
     $meeting.Start = $meet.start
