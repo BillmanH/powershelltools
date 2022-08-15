@@ -2,7 +2,9 @@
 $meetingSubject = "Accenture Internal Meeting"
 $clientMeetingSubject = "Client Meeting"
 
+# "in" takes the items from your calendar and puts them in an csv.
 $direction = "in"
+# "out" takes the excel sheet and puts items in your calendar.
 # $direction = "out"
 
 $today = Get-Date
